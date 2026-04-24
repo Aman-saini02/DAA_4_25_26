@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sudoku Solver</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <div class="container">
+    <header>
+      <div class="logo-mark">9×9</div>
+      <h1>SUDOKU <span>SOLVER</span></h1>
+      <p class="subtitle">Backtracking Algorithm · DSA Visualizer</p>
+    </header>
+
+    <main>
+      <!-- Status bar -->
+      <div class="status-bar" id="statusBar">
+        <div class="status-dot" id="statusDot"></div>
+        <span id="statusText">Ready — Enter numbers and press Solve</span>
+      </div>
+
+      <!-- Sudoku Grid -->
+      <div class="grid-wrapper">
+        <div class="sudoku-grid" id="sudokuGrid"></div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button class="btn btn-solve" id="solveBtn" onclick="handleSolve()">
+          <span class="btn-icon">▶</span>
+          <span>Solve</span>
+        </button>
+        <button class="btn btn-visualize" id="visualizeBtn" onclick="handleVisualize()">
+          <span class="btn-icon">◈</span>
+          <span>Visualize</span>
+        </button>
+        <button class="btn btn-sample" onclick="loadSample()">
+          <span class="btn-icon">⊞</span>
+          <span>Sample</span>
+        </button>
+        <button class="btn btn-clear" onclick="clearGrid()">
+          <span class="btn-icon">✕</span>
+          <span>Clear</span>
+        </button>
+      </div>
+
+      <!-- Stats Panel -->
+      <div class="stats-panel" id="statsPanel">
+        <div class="stat">
+          <span class="stat-label">Steps</span>
+          <span class="stat-value" id="statSteps">—</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Backtracks</span>
+          <span class="stat-value" id="statBacktracks">—</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Time</span>
+          <span class="stat-value" id="statTime">—</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Status</span>
+          <span class="stat-value" id="statStatus">—</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- Algorithm Info Panel -->
+    <section class="algo-info">
+      <h2>How It Works</h2>
+      <div class="algo-cards">
+        <div class="algo-card">
+          <div class="card-num">01</div>
+          <h3>Find Empty Cell</h3>
+          <p>Scan the grid left-to-right, top-to-bottom for the next unfilled cell (value = 0).</p>
+        </div>
+        <div class="algo-card">
+          <div class="card-num">02</div>
+          <h3>Try Digits 1–9</h3>
+          <p>Attempt placing each digit and validate against row, column, and 3×3 box constraints.</p>
+        </div>
+        <div class="algo-card">
+          <div class="card-num">03</div>
+          <h3>Recurse</h3>
+          <p>If valid, recurse deeper. If a dead end is reached, backtrack and try the next digit.</p>
+        </div>
+        <div class="algo-card">
+          <div class="card-num">04</div>
+          <h3>Complete</h3>
+          <p>No empty cells left? Puzzle solved! Otherwise, report as unsolvable.</p>
+        </div>
+      </div>
+      <div class="complexity">
+        <div class="complexity-item">
+          <span class="cx-label">Time Complexity</span>
+          <code>O(9^m)</code>
+          <span class="cx-note">m = empty cells</span>
+        </div>
+        <div class="complexity-item">
+          <span class="cx-label">Space Complexity</span>
+          <code>O(m)</code>
+          <span class="cx-note">recursion stack depth</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Built with Backtracking · HTML · CSS · JavaScript</p>
+    </footer>
+  </div>
+
+  <script src="solver.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
